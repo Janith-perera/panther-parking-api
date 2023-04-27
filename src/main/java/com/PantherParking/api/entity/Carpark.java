@@ -1,12 +1,9 @@
 package com.PantherParking.api.entity;
-import java.sql.Date;
-import java.util.List;
 
+import java.util.List;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
