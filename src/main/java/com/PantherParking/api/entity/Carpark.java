@@ -31,7 +31,10 @@ public class Carpark {
 	
 	@OneToMany(mappedBy="carpark")
 	private List<CarparkUserAccount> accounts;
-
+	
+	@OneToMany(mappedBy="carpark")
+	private List<ParkingSlot> parkingslots;
+	
 	public String getCarparkID() {
 		return carparkID;
 	}
