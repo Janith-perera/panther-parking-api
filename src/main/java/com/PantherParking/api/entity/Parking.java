@@ -5,10 +5,13 @@ import java.sql.Time;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
@@ -45,8 +48,9 @@ public class Parking {
     @JoinColumn(name="PARKINGSLOTID", nullable=false)
 	private ParkingSlot parkingSlotId;
 	
-	
-	
+	@OneToOne(mappedBy = "parking", cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	private ParkingPayments parkingPayment;
 	
 	public String getParkingId() {
 		return ParkingId;
@@ -78,7 +82,4 @@ public class Parking {
 	public void setLeavedTime(Time leavedTime) {
 		this.leavedTime = leavedTime;
 	}
-	
-	
-
 }
