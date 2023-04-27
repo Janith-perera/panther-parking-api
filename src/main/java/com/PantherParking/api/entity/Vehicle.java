@@ -1,6 +1,5 @@
 package com.PantherParking.api.entity;
 
-
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Basic;
