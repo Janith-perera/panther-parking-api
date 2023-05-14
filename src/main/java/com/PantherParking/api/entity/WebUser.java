@@ -1,9 +1,13 @@
 package com.PantherParking.api.entity;
 
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 
+@Entity
+@Table(name="WevbUser")
 public class WebUser {
 	
 	@Id

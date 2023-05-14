@@ -17,7 +17,7 @@ import jakarta.persistence.FetchType;
 public class CarparkUserAccount {
 	@Id
 	@Basic(optional=false)
-	@Column(name ="CPAccountId")
+	@Column(name ="xp_account_id")
 	private String accountId;
 	
 	@Basic(optional=false)
@@ -33,10 +33,10 @@ public class CarparkUserAccount {
 	private String hashCode;
 	
 	@OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CPUserID")
+    @JoinColumn(name = "cp_user_id")
 	private CarparkUser CPUserID;
 	
-	@Column(name ="accountType")
+	@Column(name ="account_type")
 	private char accountType;
 	
 	@ManyToOne
