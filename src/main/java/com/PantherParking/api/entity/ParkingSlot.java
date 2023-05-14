@@ -30,7 +30,7 @@ public class ParkingSlot {
     @JoinColumn(name="carpark", nullable=false)
 	private Carpark carpark;
 	
-	@OneToMany(mappedBy="slot_id")
+	@OneToMany(mappedBy="ParkingId")
 	private List<Parking> parkings; 
  	
 	public Carpark getCarpark() {

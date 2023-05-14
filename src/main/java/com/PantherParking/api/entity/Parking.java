@@ -34,18 +34,16 @@ public class Parking {
 	@Temporal(TemporalType.TIME)
 	private Time arrivedTime;
 	
-//	@Basic(optional=false)
 	@Column(name ="leaved_date")
 	@Temporal(TemporalType.DATE)
 	private Date leavedDate;
 	
-//	@Basic(optional=false)
 	@Column(name ="leaved_time")
 	@Temporal(TemporalType.TIME)
 	private Time leavedTime;
 	
 	@ManyToOne
-    @JoinColumn(name="parking_slot_id", nullable=false)
+    @JoinColumn(name="SlotID", nullable=false)
 	private ParkingSlot parkingSlotId;
 	
 	@OneToOne(mappedBy = "parking", cascade = CascadeType.ALL)
