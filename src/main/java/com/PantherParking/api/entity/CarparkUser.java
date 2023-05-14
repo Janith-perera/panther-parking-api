@@ -13,7 +13,7 @@ import jakarta.persistence.Entity;
 public class CarparkUser {
 	@Id
 	@Basic(optional=false)
-	@Column(name ="CPUserID")
+	@Column(name ="cp_user_id")
 	private String CPUserID;
 	
 	@Basic(optional=false)

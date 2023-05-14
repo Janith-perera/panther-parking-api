@@ -1,21 +1,16 @@
 package com.PantherParking.api.entity;
 
 import java.sql.Date;
-import java.util.List;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-
-
 
 @Entity
 @Table(name="PARKINGPAYMENTS")
@@ -23,20 +18,20 @@ public class ParkingPayments {
 	
 	@Id
 	@Basic(optional=false)
-	@Column(name ="PAYMENTID")
+	@Column(name ="payment_id")
 	private String paymentId;
 	
 	@Basic(optional=false)
-	@Column(name ="STATUS")
+	@Column(name ="status")
 	private String status;
-	
+	 
 	@Basic(optional=false)
-	@Column(name ="DATE")
+	@Column(name ="date")
 	@Temporal(TemporalType.DATE)
 	private Date date;
 	
 	@Basic(optional=false)
-	@Column(name ="AMOUNT")
+	@Column(name ="amount")
 	private double amount;
 	
 	@OneToOne

@@ -21,31 +21,31 @@ public class Parking {
 	
 	@Id
 	@Basic(optional=false)
-	@Column(name ="PARKINGID")
+	@Column(name ="parking_id")
 	private String ParkingId;
 	
 	@Basic(optional=false)
-	@Column(name ="ARRIVEDDATE")
+	@Column(name ="arrived_date")
 	@Temporal(TemporalType.DATE)
 	private Date arrivedDate;
 	
 	@Basic(optional=false)
-	@Column(name ="ARRIVEDTIME")
+	@Column(name ="arrived_time")
 	@Temporal(TemporalType.TIME)
 	private Time arrivedTime;
 	
-	@Basic(optional=false)
-	@Column(name ="LEAVEDDATE")
+//	@Basic(optional=false)
+	@Column(name ="leaved_date")
 	@Temporal(TemporalType.DATE)
 	private Date leavedDate;
 	
-	@Basic(optional=false)
-	@Column(name ="LEAVEDTIME")
+//	@Basic(optional=false)
+	@Column(name ="leaved_time")
 	@Temporal(TemporalType.TIME)
 	private Time leavedTime;
 	
 	@ManyToOne
-    @JoinColumn(name="PARKINGSLOTID", nullable=false)
+    @JoinColumn(name="parking_slot_id", nullable=false)
 	private ParkingSlot parkingSlotId;
 	
 	@OneToOne(mappedBy = "parking", cascade = CascadeType.ALL)

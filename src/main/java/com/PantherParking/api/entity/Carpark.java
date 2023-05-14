@@ -14,16 +14,16 @@ public class Carpark {
 	
 	@Id
 	@Basic(optional=false)
-	@Column(name ="CPUSERID")
+	@Column(name ="cp_user_id")
 	private String carparkID;
 
-	@Column(name ="CARPARKNAME")
+	@Column(name ="carpark_name")
 	private String carparkName;
 	
-	@Column(name ="LOCATIONLATTITUDE")
+	@Column(name ="location_lattitude")
 	private String locationLattitude;
 	
-	@Column(name ="LOCATIONLONGITUDE")
+	@Column(name ="location_longitude")
 	private String locationLongitude;
 	
 	@OneToMany(mappedBy="carpark")
