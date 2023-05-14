@@ -14,23 +14,23 @@ import jakarta.persistence.Entity;
 public class ParkingSlot {
 	@Id
 	@Basic(optional=false)
-	@Column(name ="SLOTID")
+	@Column(name ="slot_id")
 	private String SlotID;
 	
-	@Column(name ="STATUS")
+	@Column(name ="status")
 	private String Status;
 	
-	@Column(name ="TYPE")
+	@Column(name ="type")
 	private String Type;
 	
-	@Column(name ="AVAILABILITY")
+	@Column(name ="availability")
 	private boolean isAvalable;
 	
 	@ManyToOne
     @JoinColumn(name="carpark", nullable=false)
 	private Carpark carpark;
 	
-	@OneToMany(mappedBy="parkingSlotId")
+	@OneToMany(mappedBy="slot_id")
 	private List<Parking> parkings; 
  	
 	public Carpark getCarpark() {

@@ -7,23 +7,23 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
 @Entity
-@Table(name="WevbUser")
+@Table(name="WEBUSER")
 public class WebUser {
 	
 	@Id
 	@Basic(optional=false)
-	@Column(name ="WEBUSERID")
+	@Column(name ="web_user_id")
 	private String webUserId;
 	
 	@Basic(optional=false)
-	@Column(name ="NAME")
+	@Column(name ="name")
 	private String name;
 	
-	@Column(name ="ADDRESS")
+	@Column(name ="address")
 	private String Address;
 	
 	@Basic(optional=false)
-	@Column(name ="NIC")
+	@Column(name ="nic")
 	private String nic;
 	
 	
