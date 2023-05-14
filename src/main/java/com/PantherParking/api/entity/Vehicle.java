@@ -11,18 +11,18 @@ import jakarta.persistence.Entity;
 public class Vehicle {
 	@Id
 	@Basic(optional=false)
-	@Column(name ="VEHICLEID")
+	@Column(name ="vehicle_id")
 	private String vehicleId;
 	
 	@Basic(optional=false)
-	@Column(name ="TYPE")
+	@Column(name ="type")
 	private String vehicleType;
 	
-	@Column(name ="MODLE")
-	private String vehcileModle;
+	@Column(name ="model")
+	private String vehcileModel;
 	
 	@Basic(optional=false)
-	@Column(name ="REGNUMBER")
+	@Column(name ="reg_number")
 	private String vehicleNumber;
 	
 	
@@ -39,10 +39,10 @@ public class Vehicle {
 		this.vehicleType = vehicleType;
 	}
 	public String getVehcileModle() {
-		return vehcileModle;
+		return vehcileModel;
 	}
-	public void setVehcileModle(String vehcileModle) {
-		this.vehcileModle = vehcileModle;
+	public void setVehcileModle(String vehcileModel) {
+		this.vehcileModel = vehcileModel;
 	}
 	public String getVehicleNumber() {
 		return vehicleNumber;

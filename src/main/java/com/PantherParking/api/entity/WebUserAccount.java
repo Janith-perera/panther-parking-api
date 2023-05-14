@@ -10,7 +10,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="WevbUser")
+@Table(name="WEBUSERACCOUNT")
 public class WebUserAccount {
 	
 	@Id
@@ -33,6 +33,7 @@ public class WebUserAccount {
     @JoinColumn(name = "webuser_id")
 	private WebUser webUser;
 	
+
 
 	public int getAccountId() {
 		return accountId;
