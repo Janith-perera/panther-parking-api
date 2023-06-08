@@ -36,7 +36,7 @@ public class ParkingPayments {
 	
 	@OneToOne
     @MapsId
-    @JoinColumn(name = "parking_")
+    @JoinColumn(name = "parking")
 	private Parking parking;
 
 	public String getPaymentId() {

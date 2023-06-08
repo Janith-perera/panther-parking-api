@@ -7,17 +7,20 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 @Table(name = "carpark")
 public class Carpark {
 	
 	@Id
-	@Basic(optional=false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name ="cp_user_id")
-	private String carparkID;
+	private int carparkID;
 
-	@Column(name ="carpark_name")
+	
+	@Column(name ="carpark_name",unique=true)
 	private String carparkName;
 	
 	@Column(name ="location_lattitude")
@@ -26,17 +29,36 @@ public class Carpark {
 	@Column(name ="location_longitude")
 	private String locationLongitude;
 	
+	@Column(name ="contact_number")
+	private String contactNumber;
+	
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
+	public List<ParkingSlot> getParkingslots() {
+		return parkingslots;
+	}
+
+	public void setParkingslots(List<ParkingSlot> parkingslots) {
+		this.parkingslots = parkingslots;
+	}
+
 	@OneToMany(mappedBy="carpark")
 	private List<CarparkUserAccount> accounts;
 	
 	@OneToMany(mappedBy="carpark")
 	private List<ParkingSlot> parkingslots;
 	
-	public String getCarparkID() {
+	public int getCarparkID() {
 		return carparkID;
 	}
 
-	public void setCarparkID(String carparkID) {
+	public void setCarparkID(int carparkID) {
 		this.carparkID = carparkID;
 	}
 
