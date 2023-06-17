@@ -1,7 +1,11 @@
 package com.PantherParking.api.entity;
 
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
+import java.util.List;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,6 +33,16 @@ public class WebUser {
 	@Column(name ="nic")
 	private String nic;
 	
+	@OneToMany(mappedBy="webUser")
+	private List<SlotBooking> slotBooking;
+//	
+	@OneToMany(mappedBy="webUser")
+	private List<Vehicle> vehicle;
+	
+	
+	
+	
+	
 	
 	public int getWebUserId() {
 		return webUserId;
@@ -54,6 +68,19 @@ public class WebUser {
 	public void setNic(String nic) {
 		this.nic = nic;
 	}
+	public List<SlotBooking> getSlotBooking() {
+		return slotBooking;
+	}
+	public void setSlotBooking(List<SlotBooking> slotBooking) {
+		this.slotBooking = slotBooking;
+	}
+	public List<Vehicle> getVehicle() {
+		return vehicle;
+	}
+	public void setVehicle(List<Vehicle> vehicle) {
+		this.vehicle = vehicle;
+	}
+	
 	
 	
 	

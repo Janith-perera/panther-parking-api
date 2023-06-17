@@ -1,6 +1,5 @@
 package com.PantherParking.api.impl;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +19,6 @@ public class CarparkImpl implements CarparkService{
 	
 	@Override
 	public String addNewCarpark(Carpark cp) {
-//		Carpark cpObj = new Carpark();
-//		cpObj.setCarparkName("Hello World");
-//		cpObj.setLocationLattitude("0.333");
-//		cpObj.setLocationLongitude("0.333");
-		
 		return Integer.toString(cpRepo.save(cp).getCarparkID());
 	}
 

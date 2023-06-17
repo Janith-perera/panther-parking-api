@@ -27,11 +27,11 @@ public interface ParkingSlotRepository extends CrudRepository<ParkingSlot, Strin
 	@Query("SELECT s FROM ParkingSlot s WHERE s.carpark.carparkID = :cpid and s.isAvailable = :avb AND s.status != 'disable'")
 	List<ParkingSlot> getAvailableSlotsByCarparkId(@Param("cpid")int carparkId,@Param("avb")boolean availability);
 	
-	@Query("SELECT com.PantherParking.api.Response.SlotInfoDTO(s.status, s.type, s.isAvailable, s.isBookedNow, s.slotRefNumber) FROM ParkingSlot s WHERE s.carpark.carparkID = :cpid ")
-	List<SlotInfoDTO> getAllSlotsByCarparkId(@Param("cpid")int carparkId);
+	@Query("SELECT s FROM ParkingSlot s WHERE s.carpark.carparkID = :cpid ")
+	List<ParkingSlot> getAllSlotsByCarparkId(@Param("cpid")int carparkId);
 	
-	@Query("SELECT com.PantherParking.api.Response.SlotInfoDTO(s.status, s.type, s.isAvailable, s.isBookedNow, s.slotRefNumber) FROM ParkingSlot s WHERE s.carpark.carparkID = :cpid AND s.status = 'disable'")
-	List<SlotInfoDTO> getDisabledSlotsByCarparkId(@Param("cpid")int carparkId);
+	@Query("SELECT s FROM ParkingSlot s WHERE s.carpark.carparkID = :cpid AND s.status = 'disable'")
+	List<ParkingSlot> getDisabledSlotsByCarparkId(@Param("cpid")int carparkId);
 	
 	
 	

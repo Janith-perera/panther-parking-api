@@ -2,7 +2,7 @@ package com.PantherParking.api.entity;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.util.List;
+
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
@@ -12,7 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -49,6 +49,13 @@ public class SlotBooking {
 	@JoinColumn(name="carpark")
 	private Carpark carpark;
 	
+	@ManyToOne
+	@JoinColumn(name="web_user")
+	private WebUser webUser;
+	
+	@ManyToOne
+	@JoinColumn(name="vehicle")
+	private Vehicle vehicle;
 	
 
 	public ParkingSlot getSlot() {
@@ -90,5 +97,32 @@ public class SlotBooking {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	public Carpark getCarpark() {
+		return carpark;
+	}
+
+	public void setCarpark(Carpark carpark) {
+		this.carpark = carpark;
+	}
+
+	public WebUser getWebUser() {
+		return webUser;
+	}
+
+	public void setWebUser(WebUser webUser) {
+		this.webUser = webUser;
+	}
+
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
+	
+	
+	
 	
 }

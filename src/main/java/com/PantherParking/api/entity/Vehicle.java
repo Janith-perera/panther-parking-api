@@ -1,6 +1,8 @@
 package com.PantherParking.api.entity;
 
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
@@ -30,6 +32,10 @@ public class Vehicle {
 	@Basic(optional=false)
 	@Column(name ="reg_number")
 	private String vehicleNumber;
+	
+	@ManyToOne
+	@JoinColumn(name ="web_user")
+	private WebUser webUser;
 	
 	
 	public int getVehicleId() {
@@ -68,6 +74,14 @@ public class Vehicle {
 	public void setVehcileModel(String vehcileModel) {
 		this.vehcileModel = vehcileModel;
 	}
+//	
+//	public WebUser getWebUser() {
+//		return webUser;
+//	}
+//	public void setWebUser(WebUser webUser) {
+//		this.webUser = webUser;
+//	}
+//	
 	
 	
 	

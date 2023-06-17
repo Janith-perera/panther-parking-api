@@ -25,5 +25,6 @@ public interface ParkingSlotService {
 	int getDisabledSlotCont(int cpid);
 	List<SlotInfoDTO> getFreeParkingSlots(int cpid);
 	List<SlotInfoDTO> getUsedParkingSlots(int cpid);
+	List<SlotInfoDTO> getDisabledParkingSlots(int cpid);
 }
 

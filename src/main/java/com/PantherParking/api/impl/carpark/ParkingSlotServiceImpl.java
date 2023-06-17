@@ -141,6 +141,27 @@ public class ParkingSlotServiceImpl implements ParkingSlotService {
 		return slotInfoList;
 	
 	}
+	
+	@Override
+	public List<SlotInfoDTO> getDisabledParkingSlots(int cpid){
+
+		List<ParkingSlot> slotList = parkingSlotRepository.getDisabledSlotsByCarparkId(cpid);
+		List<SlotInfoDTO> slotInfoList = new ArrayList<>();
+		for (ParkingSlot result : slotList) {
+	        SlotInfoDTO slotInfo = new SlotInfoDTO();
+	        slotInfo.setSlotId(result.getSlotID());
+	        slotInfo.setStatus(result.getStatus());
+	        slotInfo.setType(result.getType());
+	        slotInfo.setAvailable(result.getIsAvailable());
+	        slotInfo.setBookedNow(result.isBookedNow());
+	        slotInfo.setSlotRefNumber(result.getSlotRefNumber());
+	        slotInfo.setFromDate(result.getDateAvailableFrom());
+	        slotInfo.setFromTime(result.getTimeAvailableFrom());
+	        slotInfoList.add(slotInfo);
+	    }
+		return slotInfoList;
+	
+	}
 
 	
     
