@@ -16,7 +16,7 @@ public class Carpark {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name ="cp_user_id")
+	@Column(name ="carparkId")
 	private int carparkID;
 
 	
@@ -32,27 +32,14 @@ public class Carpark {
 	@Column(name ="contact_number")
 	private String contactNumber;
 	
-	public String getContactNumber() {
-		return contactNumber;
-	}
-
-	public void setContactNumber(String contactNumber) {
-		this.contactNumber = contactNumber;
-	}
-
-	public List<ParkingSlot> getParkingslots() {
-		return parkingslots;
-	}
-
-	public void setParkingslots(List<ParkingSlot> parkingslots) {
-		this.parkingslots = parkingslots;
-	}
-
 	@OneToMany(mappedBy="carpark")
 	private List<CarparkUserAccount> accounts;
 	
 	@OneToMany(mappedBy="carpark")
 	private List<ParkingSlot> parkingslots;
+	
+	@OneToMany(mappedBy="carpark")
+	private List<SlotBooking> slotBooking;
 	
 	public int getCarparkID() {
 		return carparkID;
@@ -61,6 +48,7 @@ public class Carpark {
 	public void setCarparkID(int carparkID) {
 		this.carparkID = carparkID;
 	}
+	
 
 	public String getCarparkName() {
 		return carparkName;
@@ -93,5 +81,30 @@ public class Carpark {
 	public void setAccounts(List<CarparkUserAccount> accounts) {
 		this.accounts = accounts;
 	}
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
+	public List<ParkingSlot> getParkingslots() {
+		return parkingslots;
+	}
+
+	public void setParkingslots(List<ParkingSlot> parkingslots) {
+		this.parkingslots = parkingslots;
+	}
+
+	public List<SlotBooking> getSlotBooking() {
+		return slotBooking;
+	}
+
+	public void setSlotBooking(List<SlotBooking> slotBooking) {
+		this.slotBooking = slotBooking;
+	}
+	
+	
 	
 }

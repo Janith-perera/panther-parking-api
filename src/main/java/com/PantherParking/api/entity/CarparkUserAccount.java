@@ -11,14 +11,17 @@ import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 @Table(name="carparkuseraccout")
 public class CarparkUserAccount {
 	@Id
 	@Basic(optional=false)
-	@Column(name ="xp_account_id")
-	private String accountId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name ="cp_account_id")
+	private int accountId;
 	
 	@Basic(optional=false)
 	@Column(name ="username")
@@ -37,17 +40,17 @@ public class CarparkUserAccount {
 	private CarparkUser CPUserID;
 	
 	@Column(name ="account_type")
-	private char accountType;
+	private String accountType;
 	
 	@ManyToOne
     @JoinColumn(name="carpark", nullable=false)
 	private Carpark carpark;
 
-	public String getAccountId() {
+	public int getAccountId() {
 		return accountId;
 	}
 
-	public void setAccountId(String accountId) {
+	public void setAccountId(int accountId) {
 		this.accountId = accountId;
 	}
 
@@ -91,12 +94,22 @@ public class CarparkUserAccount {
 		CPUserID = cPUserID;
 	}
 
-	public char getAccountType() {
+	public String getAccountType() {
 		return accountType;
 	}
 
-	public void setAccountType(char accountType) {
+	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
+
+	public Carpark getCarpark() {
+		return carpark;
+	}
+
+	public void setCarpark(Carpark carpark) {
+		this.carpark = carpark;
+	}
+	
+	
 	
 }

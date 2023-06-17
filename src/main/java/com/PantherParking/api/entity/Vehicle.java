@@ -5,6 +5,8 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 @Table(name="VEHICLE")
@@ -12,11 +14,15 @@ public class Vehicle {
 	@Id
 	@Basic(optional=false)
 	@Column(name ="vehicle_id")
-	private String vehicleId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int vehicleId;
 	
 	@Basic(optional=false)
 	@Column(name ="type")
 	private String vehicleType;
+	
+	@Column(name ="brand")
+	private String vehcileBrand;
 	
 	@Column(name ="model")
 	private String vehcileModel;
@@ -26,10 +32,10 @@ public class Vehicle {
 	private String vehicleNumber;
 	
 	
-	public String getVehicleId() {
+	public int getVehicleId() {
 		return vehicleId;
 	}
-	public void setVehicleId(String vehicleId) {
+	public void setVehicleId(int vehicleId) {
 		this.vehicleId = vehicleId;
 	}
 	public String getVehicleType() {
@@ -50,6 +56,19 @@ public class Vehicle {
 	public void setVehicleNumber(String vehicleNumber) {
 		this.vehicleNumber = vehicleNumber;
 	}
+	public String getVehcileBrand() {
+		return vehcileBrand;
+	}
+	public void setVehcileBrand(String vehcileBrand) {
+		this.vehcileBrand = vehcileBrand;
+	}
+	public String getVehcileModel() {
+		return vehcileModel;
+	}
+	public void setVehcileModel(String vehcileModel) {
+		this.vehcileModel = vehcileModel;
+	}
+	
 	
 	
 	

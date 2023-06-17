@@ -9,6 +9,8 @@ import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
@@ -19,7 +21,8 @@ public class ParkingPayments {
 	@Id
 	@Basic(optional=false)
 	@Column(name ="payment_id")
-	private String paymentId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int paymentId;
 	
 	@Basic(optional=false)
 	@Column(name ="status")
@@ -39,11 +42,11 @@ public class ParkingPayments {
     @JoinColumn(name = "parking")
 	private Parking parking;
 
-	public String getPaymentId() {
+	public int getPaymentId() {
 		return paymentId;
 	}
 
-	public void setPaymentId(String paymentId) {
+	public void setPaymentId(int paymentId) {
 		this.paymentId = paymentId;
 	}
 
@@ -70,6 +73,16 @@ public class ParkingPayments {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
+
+	public Parking getParking() {
+		return parking;
+	}
+
+	public void setParking(Parking parking) {
+		this.parking = parking;
+	}
+	
+	
 	
 	
 	

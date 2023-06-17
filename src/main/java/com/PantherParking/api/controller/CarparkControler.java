@@ -54,7 +54,11 @@ public class CarparkControler{
 	@PutMapping("carpark/test/{num}")
 	public void testSpaces(@PathVariable("num")int number , @RequestBody Map<String, Object> freeSlots) {
 		System.out.println(freeSlots.get("parkingSpaces"));
+		System.out.println(freeSlots.get("freeSlotCount"));
+		
 	}
+	
+	
 	
 	
 	

@@ -14,6 +14,8 @@ import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 @Table(name="PRAKING")
@@ -22,7 +24,8 @@ public class Parking {
 	@Id
 	@Basic(optional=false)
 	@Column(name ="parking_id")
-	private String ParkingId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int ParkingId;
 	
 	@Basic(optional=false)
 	@Column(name ="arrived_date")
@@ -43,17 +46,17 @@ public class Parking {
 	private Time leavedTime;
 	
 	@ManyToOne
-    @JoinColumn(name="SlotID", nullable=false)
+    @JoinColumn(name="slot_id", nullable=false)
 	private ParkingSlot parkingSlotId;
 	
 	@OneToOne(mappedBy = "parking", cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn
 	private ParkingPayments parkingPayment;
 	
-	public String getParkingId() {
+	public int getParkingId() {
 		return ParkingId;
 	}
-	public void setParkingId(String parkingId) {
+	public void setParkingId(int parkingId) {
 		ParkingId = parkingId;
 	}
 	public Date getArrivedDate() {
@@ -80,4 +83,18 @@ public class Parking {
 	public void setLeavedTime(Time leavedTime) {
 		this.leavedTime = leavedTime;
 	}
+	public ParkingSlot getParkingSlotId() {
+		return parkingSlotId;
+	}
+	public void setParkingSlotId(ParkingSlot parkingSlotId) {
+		this.parkingSlotId = parkingSlotId;
+	}
+	public ParkingPayments getParkingPayment() {
+		return parkingPayment;
+	}
+	public void setParkingPayment(ParkingPayments parkingPayment) {
+		this.parkingPayment = parkingPayment;
+	}
+	
+	
 }

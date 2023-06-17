@@ -5,6 +5,8 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 @Table(name="WEBUSER")
@@ -13,7 +15,8 @@ public class WebUser {
 	@Id
 	@Basic(optional=false)
 	@Column(name ="web_user_id")
-	private String webUserId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int webUserId;
 	
 	@Basic(optional=false)
 	@Column(name ="name")
@@ -27,10 +30,10 @@ public class WebUser {
 	private String nic;
 	
 	
-	public String getWebUserId() {
+	public int getWebUserId() {
 		return webUserId;
 	}
-	public void setWebUserId(String webUserId) {
+	public void setWebUserId(int webUserId) {
 		this.webUserId = webUserId;
 	}
 	public String getName() {
@@ -51,6 +54,7 @@ public class WebUser {
 	public void setNic(String nic) {
 		this.nic = nic;
 	}
+	
 	
 	
 }
