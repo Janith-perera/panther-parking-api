@@ -37,6 +37,10 @@ public class SlotBooking {
 	@Temporal(TemporalType.TIME)
 	private Time startTime;
 	
+	@Column(name ="leave_time")
+	@Temporal(TemporalType.TIME)
+	private Time leaveTime;
+	
 	@Basic(optional=false)
 	@Column(name ="status")
 	private String status;
@@ -121,6 +125,15 @@ public class SlotBooking {
 	public void setVehicle(Vehicle vehicle) {
 		this.vehicle = vehicle;
 	}
+
+	public Time getLeaveTime() {
+		return leaveTime;
+	}
+
+	public void setLeaveTime(Time leaveTime) {
+		this.leaveTime = leaveTime;
+	}
+	
 	
 	
 	

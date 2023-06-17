@@ -26,7 +26,7 @@ public class CarparkReservationImpl implements CarparkReservationService {
 
 	@Override
 	public List<SlotBooking> viewReservations(int cpId) {
-		return cpReservationRepo. findAllByCarparkId(cpId);
+		return cpReservationRepo.findAllByCarparkId(cpId);
 	}
 	
 	

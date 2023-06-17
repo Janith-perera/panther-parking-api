@@ -8,10 +8,10 @@ import org.springframework.data.repository.query.Param;
 import com.PantherParking.api.entity.SlotBooking;
 
 public interface CarparkReservationRepository extends JpaRepository <SlotBooking,Integer>{
-	@Query("SELECT sb FROM  SlotBooking sb  where sb.status= :status and sb.carpark.carparkID= :cpId")
+	@Query("SELECT sb FROM  SlotBooking sb  where sb.status = :status and sb.carpark.carparkID = :cpId")
 	public List<SlotBooking> findByStatus(@Param("status")String status, @Param("cpId") int carparkId);
 	
-	@Query("SELECT sb FROM  SlotBooking sb  where  sb.carpark.carparkID= :cpId")
-	public List<SlotBooking> findAllByCarparkId( @Param("cpId") int carparkId);
+	@Query("SELECT sb FROM  SlotBooking sb  where sb.carpark.carparkID = :cpId")
+	public List<SlotBooking> findAllByCarparkId(@Param("cpId") int carparkId);
 	
 }
