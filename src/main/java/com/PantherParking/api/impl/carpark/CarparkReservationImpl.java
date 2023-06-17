@@ -29,6 +29,14 @@ public class CarparkReservationImpl implements CarparkReservationService {
 		return cpReservationRepo.findAllByCarparkId(cpId);
 	}
 	
+	@Override
+	public SlotBooking updateStatus(int bookingId, String newStatus) {
+	      SlotBooking slotBooking = cpReservationRepo.findById(bookingId)
+	                .orElseThrow(() -> new RuntimeException("Slot booking not found"));
+	        
+	      slotBooking.setStatus(newStatus);
+	      return cpReservationRepo.save(slotBooking);
+	}
 	
 	
 	

@@ -12,4 +12,6 @@ public interface CarparkReservationService {
 	public List<SlotBooking> viewReservations(int cpId);
 
 	List<SlotBooking> viewReservations(String status, int cpId);
+
+	SlotBooking updateStatus(int bookingId, String newStatus);
 }
