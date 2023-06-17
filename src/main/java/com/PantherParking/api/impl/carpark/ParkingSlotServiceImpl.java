@@ -45,7 +45,7 @@ public class ParkingSlotServiceImpl implements ParkingSlotService {
         	ps.setTimeAvailableFrom(sqlTime);
         	ps.setIsAvailable(isAvailable);
         	parkingSlotRepository.save(ps);
-            
+          
         }
         
         return parkingSlot;
@@ -114,6 +114,8 @@ public class ParkingSlotServiceImpl implements ParkingSlotService {
 	        slotInfo.setAvailable(result.getIsAvailable());
 	        slotInfo.setBookedNow(result.isBookedNow());
 	        slotInfo.setSlotRefNumber(result.getSlotRefNumber());
+	        slotInfo.setFromDate(result.getDateAvailableFrom());
+	        slotInfo.setFromTime(result.getTimeAvailableFrom());
 	        slotInfoList.add(slotInfo);
 	    }
 		return slotInfoList;
@@ -132,6 +134,8 @@ public class ParkingSlotServiceImpl implements ParkingSlotService {
 	        slotInfo.setAvailable(result.getIsAvailable());
 	        slotInfo.setBookedNow(result.isBookedNow());
 	        slotInfo.setSlotRefNumber(result.getSlotRefNumber());
+	        slotInfo.setFromDate(result.getDateAvailableFrom());
+	        slotInfo.setFromTime(result.getTimeAvailableFrom());
 	        slotInfoList.add(slotInfo);
 	    }
 		return slotInfoList;

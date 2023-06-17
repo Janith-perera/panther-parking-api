@@ -1,5 +1,8 @@
 package com.PantherParking.api.Response;
 
+import java.sql.Date;
+import java.sql.Time;
+
 public class SlotInfoDTO {
 	private int slotId;
     private String status;
@@ -7,6 +10,8 @@ public class SlotInfoDTO {
     private boolean isAvailable;
     private boolean isBookedNow;
     private String slotRefNumber;
+    private Date fromDate;
+    private Time fromTime;
     
     
     
@@ -47,6 +52,19 @@ public class SlotInfoDTO {
 	public void setSlotId(int slotId) {
 		this.slotId = slotId;
 	}
+	public Date getFromDate() {
+		return fromDate;
+	}
+	public void setFromDate(Date fromDate) {
+		this.fromDate = fromDate;
+	}
+	public Time getFromTime() {
+		return fromTime;
+	}
+	public void setFromTime(Time fromTime) {
+		this.fromTime = fromTime;
+	}
+	
 	
 
     
