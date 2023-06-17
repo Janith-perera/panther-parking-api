@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.PantherParking.api.Response.CarparkUserRegistrationDTO;
+import com.PantherParking.api.entity.CarparkUser;
 import com.PantherParking.api.entity.SlotBooking;
 
 @Service
@@ -14,4 +16,6 @@ public interface CarparkReservationService {
 	List<SlotBooking> viewReservations(String status, int cpId);
 
 	SlotBooking updateStatus(int bookingId, String newStatus);
+
+
 }

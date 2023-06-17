@@ -37,17 +37,6 @@ public class CarparkReservationImpl implements CarparkReservationService {
 	      slotBooking.setStatus(newStatus);
 	      return cpReservationRepo.save(slotBooking);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 
 }
