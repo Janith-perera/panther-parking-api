@@ -1,6 +1,8 @@
 package com.PantherParking.api.impl.carpark;
 
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +39,24 @@ public class CarparkUserServiceImple implements CarparkUserService {
 	@Override
 	public CarparkUserAccount addAccount(CarparkUserAccount account) {
 		return carparkUSerAccountRepository.save(account);
+	}
+
+
+	@Override
+	public Optional<CarparkUser> getCpUserById(int userId) {
+		return carparkUserRepository.findById(String.valueOf(userId));
+	}
+	
+	@Override
+	public boolean isUsernameAvailable(String username) {
+        return ! carparkUSerAccountRepository.existsByUsername(username);
+    }
+
+
+	@Override
+	public CarparkUserAccount findByUsername(String username) {
+		
+		return carparkUSerAccountRepository.findByUsername(username);
 	}
 
 }

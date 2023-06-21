@@ -12,7 +12,7 @@ import com.PantherParking.api.entity.Carpark;
 @Service
 public interface CarparkService {
 	
-	public String addNewCarpark(Carpark cp);
+	public Carpark addNewCarpark(Carpark cp);
 	
 	public String updateCarpark();
 	

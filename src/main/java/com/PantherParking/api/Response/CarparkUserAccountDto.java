@@ -5,6 +5,7 @@ public class CarparkUserAccountDto {
     private String password;
     private String accountType;
     private int cpId;
+    private int cpUserId;
     
     
 	/**
@@ -55,6 +56,20 @@ public class CarparkUserAccountDto {
 	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
+	/**
+	 * @return the cpUserId
+	 */
+	public int getCpUserId() {
+		return cpUserId;
+	}
+	/**
+	 * @param cpUserId the cpUserId to set
+	 */
+	public void setCpUserId(int cpUserId) {
+		this.cpUserId = cpUserId;
+	}
+	
+	
 
     
 }

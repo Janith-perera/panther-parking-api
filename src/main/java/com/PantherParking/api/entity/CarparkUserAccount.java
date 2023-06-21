@@ -35,9 +35,10 @@ public class CarparkUserAccount {
 	@Column(name ="hashcode")
 	private String hashCode;
 	
+	@Basic()
 	@OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cp_user_id")
-	private CarparkUser CPUserID;
+    @JoinColumn(name = "cp_user_id", unique = true)
+	private CarparkUser cpUser;
 	
 	@Column(name ="account_type")
 	private String accountType;
@@ -86,12 +87,12 @@ public class CarparkUserAccount {
 		this.hashCode = hashCode;
 	}
 
-	public CarparkUser getCPUserID() {
-		return CPUserID;
+	public CarparkUser getCPUser() {
+		return cpUser;
 	}
 
-	public void setCPUserID(CarparkUser cPUserID) {
-		CPUserID = cPUserID;
+	public void setCpUser(CarparkUser cPUserID) {
+		cpUser = cPUserID;
 	}
 
 	public String getAccountType() {

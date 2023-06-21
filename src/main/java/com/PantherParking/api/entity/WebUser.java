@@ -27,11 +27,14 @@ public class WebUser {
 	private String name;
 	
 	@Column(name ="address")
-	private String Address;
+	private String address;
 	
 	@Basic(optional=false)
 	@Column(name ="nic")
 	private String nic;
+	
+	@Column(name ="email")
+	private String email;
 	
 	@OneToMany(mappedBy="webUser")
 	private List<SlotBooking> slotBooking;
@@ -57,10 +60,10 @@ public class WebUser {
 		this.name = name;
 	}
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 	public String getNic() {
 		return nic;
@@ -79,7 +82,16 @@ public class WebUser {
 	}
 	public void setVehicle(List<Vehicle> vehicle) {
 		this.vehicle = vehicle;
+		
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
 	
 	
 	

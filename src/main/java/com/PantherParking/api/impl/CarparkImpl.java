@@ -18,8 +18,8 @@ public class CarparkImpl implements CarparkService{
 	private CarparkRepository cpRepo;
 	
 	@Override
-	public String addNewCarpark(Carpark cp) {
-		return Integer.toString(cpRepo.save(cp).getCarparkID());
+	public Carpark  addNewCarpark(Carpark cp) {
+		return cpRepo.save(cp);
 	}
 
 	@Override
