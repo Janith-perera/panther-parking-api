@@ -17,9 +17,11 @@ import com.PantherParking.api.Response.WebuserRegistrationDTO;
 import com.PantherParking.api.entity.Carpark;
 import com.PantherParking.api.entity.CarparkUser;
 import com.PantherParking.api.entity.CarparkUserAccount;
+import com.PantherParking.api.entity.Vehicle;
 import com.PantherParking.api.entity.WebUser;
 import com.PantherParking.api.entity.WebUserAccount;
 import com.PantherParking.api.request.parkingslots.LoginRequest;
+import com.PantherParking.api.request.webuser.VehicleRegisterDTO;
 import com.PantherParking.api.service.webuser.WebUserService;
 import com.PantherParking.api.util.PasswordUtils;
 
@@ -110,6 +112,28 @@ public class WebUserController {
         // You can use a library like JJWT for token generation
         // Example: return Jwts.builder().setSubject(userId).signWith(SignatureAlgorithm.HS256, "your-secret-key").compact();
     	return String.valueOf(webuserId);
+    }
+    
+    @PostMapping("/{userId}/addnewvehicle")
+    public ResponseEntity<String> registerVehicle(@PathVariable int userId,  @RequestBody VehicleRegisterDTO  vehicleDTO){
+    	WebUser wbUser = wbScv.getWebuserById(userId);
+    	if(wbUser != null) {
+    		Vehicle vh = new Vehicle();
+    		vh.setWebUser(wbUser);
+    		vh.setVehcileBrand(vehicleDTO.getBrand());
+    		vh.setVehcileModel(vehicleDTO.getModel());
+    		vh.setVehicleNumber(vehicleDTO.getRegNumber());
+    		vh.setVehicleType(vehicleDTO.getType());
+    		
+    		Vehicle addedVh = wbScv.addNewVehicle(vh);
+    		
+    		if(addedVh!=null) {
+    			return ResponseEntity.status(HttpStatus.OK).body("Vehicle added successfully!");
+    		}
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid vehicle details");
+    	}
+
+    	return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid user");
     }
 
 

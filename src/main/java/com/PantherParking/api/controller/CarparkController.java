@@ -23,7 +23,7 @@ import com.PantherParking.api.service.CarparkService;
 @CrossOrigin
 @RestController
 @RequestMapping("/pantherapi/")
-public class CarparkControler{
+public class CarparkController{
 	
 	@Autowired
 	private CarparkService cpService; 

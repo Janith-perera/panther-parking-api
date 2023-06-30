@@ -50,12 +50,7 @@ public class Vehicle {
 	public void setVehicleType(String vehicleType) {
 		this.vehicleType = vehicleType;
 	}
-	public String getVehcileModle() {
-		return vehcileModel;
-	}
-	public void setVehcileModle(String vehcileModel) {
-		this.vehcileModel = vehcileModel;
-	}
+
 	public String getVehicleNumber() {
 		return vehicleNumber;
 	}
@@ -74,14 +69,14 @@ public class Vehicle {
 	public void setVehcileModel(String vehcileModel) {
 		this.vehcileModel = vehcileModel;
 	}
-//	
-//	public WebUser getWebUser() {
-//		return webUser;
-//	}
-//	public void setWebUser(WebUser webUser) {
-//		this.webUser = webUser;
-//	}
-//	
+	
+	public WebUser getWebUser() {
+		return webUser;
+	}
+	public void setWebUser(WebUser webUser) {
+		this.webUser = webUser;
+	}
+	
 	
 	
 	
