@@ -1,6 +1,7 @@
 package com.PantherParking.api.controller;
 
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.PantherParking.api.Response.CarparkResponse;
+import com.PantherParking.api.Response.CarparkResponseDTO;
 import com.PantherParking.api.entity.Carpark;
 import com.PantherParking.api.service.CarparkService;
 
@@ -63,6 +65,18 @@ public class CarparkController{
 		System.out.println(freeSlots.get("freeSlotCount"));
 		
 	}
+	
+	@GetMapping("carparks/location")
+	public List<CarparkResponseDTO> getCarparksByLocation(){
+		return cpService.getCarparksByLocation();
+	}
+	
+	@GetMapping("carparks/viewCarpark/{id}")
+	public CarparkResponseDTO getCarparksById(@PathVariable int id){
+		return cpService.getCarparksById(id);
+	}
+	
+	
 	
 	
 	

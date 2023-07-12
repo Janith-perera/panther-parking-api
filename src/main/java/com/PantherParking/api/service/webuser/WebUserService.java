@@ -1,7 +1,10 @@
 package com.PantherParking.api.service.webuser;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import com.PantherParking.api.Response.VehicleDTOResponse;
 import com.PantherParking.api.entity.Vehicle;
 import com.PantherParking.api.entity.WebUser;
 import com.PantherParking.api.entity.WebUserAccount;
@@ -20,4 +23,10 @@ public interface WebUserService {
 	WebUserAccount addAccount(WebUserAccount account);
 	
 	Vehicle addNewVehicle(Vehicle v);
+
+
+	List<VehicleDTOResponse> getVehicles(WebUser userId);
+
+
+	Vehicle getVehicleById(int vid);
 }

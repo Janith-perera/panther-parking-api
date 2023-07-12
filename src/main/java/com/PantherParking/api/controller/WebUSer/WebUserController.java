@@ -1,5 +1,10 @@
 package com.PantherParking.api.controller.WebUSer;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,16 +18,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.PantherParking.api.Response.CarparkRegistrationDTO;
 import com.PantherParking.api.Response.CarparkUserAccountDto;
+import com.PantherParking.api.Response.SlotBookingDTO;
+import com.PantherParking.api.Response.VehicleDTOResponse;
 import com.PantherParking.api.Response.WebuserRegistrationDTO;
 import com.PantherParking.api.entity.Carpark;
 import com.PantherParking.api.entity.CarparkUser;
 import com.PantherParking.api.entity.CarparkUserAccount;
+import com.PantherParking.api.entity.SlotBooking;
 import com.PantherParking.api.entity.Vehicle;
 import com.PantherParking.api.entity.WebUser;
 import com.PantherParking.api.entity.WebUserAccount;
 import com.PantherParking.api.request.parkingslots.LoginRequest;
+import com.PantherParking.api.request.parkingslots.SlotBookingRequestDTO;
 import com.PantherParking.api.request.webuser.VehicleRegisterDTO;
+import com.PantherParking.api.service.CarparkService;
 import com.PantherParking.api.service.webuser.WebUserService;
+import com.PantherParking.api.service.webuser.WebUserSlotBookingService;
 import com.PantherParking.api.util.PasswordUtils;
 
 @CrossOrigin
@@ -31,6 +42,12 @@ import com.PantherParking.api.util.PasswordUtils;
 public class WebUserController {
 	@Autowired
 	private WebUserService wbScv;
+	
+	@Autowired
+	private WebUserSlotBookingService wbSbs;
+	
+	@Autowired
+	private CarparkService cpService; 
 	
 	 
     @GetMapping("/check-username/{username}")
@@ -135,6 +152,59 @@ public class WebUserController {
 
     	return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid user");
     }
+    
+    @GetMapping("/{userId}/viewVehicles")
+    public ResponseEntity<?> viewAllVehicle(@PathVariable int userId){
+    	WebUser wbUser = wbScv.getWebuserById(userId);
+    	if(wbUser != null) {
+    		List<VehicleDTOResponse> vehicels = wbScv.getVehicles(wbUser);
+    		return ResponseEntity.status(HttpStatus.OK).body(vehicels);
+    	}
+    	return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid user");
+    }
+    
+    @PostMapping("/{userId}/makeReservation")
+    public ResponseEntity<?> newResevation(@PathVariable int userId, @RequestBody SlotBookingRequestDTO sbDto){
+    	WebUser wbUser = wbScv.getWebuserById(userId);
+    	if(wbUser != null) {
+    		SlotBooking sb =new SlotBooking();
+    		
+			java.util.Date date = new java.util.Date();
+			java.sql.Date sqlDate = new Date(date.getTime());
+			java.sql.Time sqlTime = new Time(date.getTime());
+    		
+			Vehicle vh =  wbScv.getVehicleById(sbDto.getVehicleId());
+			Optional<Carpark> ocp =cpService.findById(sbDto.getCarparkId());
+			if(ocp.isPresent()) {
+				Carpark cp = ocp.get();
+				
+				sb.setCarpark(cp);
+	    		sb.setDate(sqlDate);
+	    		sb.setStartTime(sqlTime);
+	    		sb.setWebUser(wbUser);
+	    		sb.setStatus("pending");
+	    		long existingTimeMillis = sqlTime.getTime(); // Get the time in milliseconds
+	            long addedTimeMillis = existingTimeMillis + (sbDto.getTimeDurationTime() * 60 * 60 * 1000); // Add 2 hours in milliseconds
 
+	            Time endTime = new Time(addedTimeMillis);
+	    		sb.setLeaveTime(endTime);
+	    		sb.setVehicle(vh);
+	    		
+	    		if(wbSbs.newSlotbooking(sb)!=null) {
+	    			return ResponseEntity.status(HttpStatus.OK).body("Resevation succeed!");
+	    		}
+	    		
+	    		
+	    		return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Resercation failed");
+	    		
+	    		
+	    		
+			}
+			
+			return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Invalid data");
+    		
+    	}
+    	return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid user!");
+    }
 
 }
